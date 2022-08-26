@@ -1,5 +1,33 @@
 [script/scriptreplay](https://www.redhat.com/sysadmin/record-terminal-script-scriptreplay) wrapper script. Which saves the resulting recorded files as gzip compressed `cmds.gz` and `time.txt.gz` files to save disk space and allows replaying of the saved compressed files.
 
+# Installation
+
+You can download the `script-record.sh` script and make it executable and run it that way. Or save it a globally executable command:
+
+```
+curl -sL https://github.com/centminmod/scriptreplay/raw/master/script-record.sh -o /usr/local/bin/script-record
+chmod +x /usr/local/bin/script-record
+```
+```
+script-record 
+
+Usage:
+
+/usr/local/bin/script-record rec SESSION_NAME
+/usr/local/bin/script-record play /path/to/cmds.gz /path/to/time.txt.gz
+/usr/local/bin/script-record play /path/to/cmds.gz /path/to/time.txt.gz 2
+/usr/local/bin/script-record list
+```
+
+# Update
+
+Updating globally executable command is the same installation:
+
+```
+curl -sL https://github.com/centminmod/scriptreplay/raw/master/script-record.sh -o /usr/local/bin/script-record
+chmod +x /usr/local/bin/script-record
+```
+
 # Usage
 
 * rec - enter your SESSION_NAME. If you do not pass a session name, the script will automatically name the session as `session`.

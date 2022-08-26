@@ -12,6 +12,12 @@ elif [ -f /usr/bin/apt ] && [[ ! -f /usr/bin/scriptreplay || ! -f /usr/bin/scrip
   sudo apt install util-linux
 fi
 
+if [ -f /usr/bin/yum && ! -f /usr/bin/tree ]; then
+  sudo yum -q -y install tree
+elif [ -f /usr/bin/apt && ! -f /usr/bin/tree ]; then
+  sudo apt install tree
+fi
+
 if [[ -f /usr/local/bin/pigz && "$CPUS" -gt '1' ]]; then
   COMPRESSBIN='/usr/local/bin/pigz'
 elif [[ -f /usr/bin/pigz && "$CPUS" -gt '1' ]]; then
@@ -51,7 +57,7 @@ replay() {
     echo "error: required file path(s) to cmds.gz or time.txt.gz do not exist"
     echo
     echo "existing files detected:"
-    tree --charset utf8 --sort=ctime -n -f "$HOME/.script/"
+    /usr/bin/tree --charset utf8 --sort=ctime -n -f "$HOME/.script/"
     echo
     help
   fi
@@ -60,7 +66,7 @@ replay() {
 list_files() {
   echo "saved files listing:"
   echo
-  tree --charset utf8 --sort=ctime -n -f "$HOME/.script/"
+  /usr/bin/tree --charset utf8 --sort=ctime -n -f "$HOME/.script/"
   echo
 }
 
