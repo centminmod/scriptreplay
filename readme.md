@@ -1,4 +1,47 @@
-[script/scriptreplay](https://www.redhat.com/sysadmin/record-terminal-script-scriptreplay) wrapper script. Which saves the resulting recorded files as gzip compressed `cmds.gz` and `time.txt.gz` files to save disk space and allows replaying of the saved compressed files.
+[script/scriptreplay](https://www.redhat.com/sysadmin/record-terminal-script-scriptreplay) wrapper script which allows you to record your SSH terminal commands and session and replay them. The resulting recorded plain text typescript based files are saved as gzip compressed `cmds.gz` and `time.txt.gz` files to save disk space and allows replaying of the saved compressed files via this wrapper script.
+
+This wrapper script uses `script` and `scriptreplay` commands.
+
+```
+script --help
+
+Usage:
+ script [options] [file]
+
+Make a typescript of a terminal session.
+
+Options:
+ -a, --append                  append the output
+ -c, --command <command>       run command rather than interactive shell
+ -e, --return                  return exit code of the child process
+ -f, --flush                   run flush after each write
+     --force                   use output file even when it is a link
+ -q, --quiet                   be quiet
+ -t[<file>], --timing[=<file>] output timing data to stderr or to FILE
+ -h, --help                    display this help
+ -V, --version                 display version
+
+For more details see script(1).
+```
+
+```
+scriptreplay --help
+
+Usage:
+ scriptreplay [-t] timingfile [typescript] [divisor]
+
+Play back terminal typescripts, using timing information.
+
+Options:
+ -t, --timing <file>     script timing output file
+ -s, --typescript <file> script terminal session output file
+ -d, --divisor <num>     speed up or slow down execution with time divisor
+ -m, --maxdelay <num>    wait at most this many seconds between updates
+ -h, --help              display this help
+ -V, --version           display version
+
+For more details see scriptreplay(1).
+```
 
 # Installation
 
