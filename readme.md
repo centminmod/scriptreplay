@@ -3,7 +3,7 @@
 # Usage
 
 * rec - enter your SESSION_NAME. If you do not pass a session name, the script will automatically name the session as `session`.
-* play - pass the full paths to where the `cmds.gz` and `time.txt.gz` files are saved. You can optionally pass a 3rd arugument for playback speed i.e. pass `2` for 2x playback speed.
+* play - pass the full paths to where the `cmds.gz` and `time.txt.gz` files are saved. You can optionally pass a 3rd arugument for playback speed i.e. pass `2` for [2x playback speed](#replay-speed).
 * list - list all previously saved `cmds.gz` and `time.txt.gz` files.
 
 ```
@@ -63,7 +63,7 @@ Usage:
 Proper scriptreply passing the previously saved `cmds.gz` and `time.txt.gz` files:
 
 ```
-./script-record.sh play /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1/time.txt.gz
+./script-record.sh play /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/time.txt.gz
 ```
 
 # Replay Speed
@@ -71,8 +71,10 @@ Proper scriptreply passing the previously saved `cmds.gz` and `time.txt.gz` file
 Pass a 3rd argument for playback speed i.e. 2x speed
 
 ```
-./script-record.sh play /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1/time.txt.gz 2
+./script-record.sh play /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/time.txt.gz 2
 ```
+
+![scriptreplay playback](/images/script-record-playback-01.gif)
 
 # list saved files
 
@@ -85,9 +87,15 @@ saved files listing:
     ├── /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1
     │   ├── /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1/cmds.gz
     │   └── /root/.script/2022-08-25/2022-08-25_22-44-10-cmds1/time.txt.gz
-    └── /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1
-        ├── /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/cmds.gz
-        └── /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/time.txt.gz
+    ├── /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1
+    │   ├── /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/cmds.gz
+    │   └── /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/time.txt.gz
+    ├── /root/.script/2022-08-25/2022-08-25_23-40-10-cmds1
+    │   ├── /root/.script/2022-08-25/2022-08-25_23-40-10-cmds1/cmds.gz
+    │   └── /root/.script/2022-08-25/2022-08-25_23-40-10-cmds1/time.txt.gz
+    └── /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1
+        ├── /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/cmds.gz
+        └── /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/time.txt.gz
 
-3 directories, 4 files
+5 directories, 8 files
 ```
