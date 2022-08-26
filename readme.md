@@ -131,7 +131,7 @@ Usage:
 
 # Replay
 
-Proper scriptreply passing the previously saved `cmds.gz` and `time.txt.gz` files:
+Proper scriptreplay passing the previously saved `cmds.gz` and `time.txt.gz` files:
 
 ```
 ./script-record.sh play /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_23-42-06-cmds1/time.txt.gz
