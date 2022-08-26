@@ -61,7 +61,14 @@ record() {
   /usr/bin/script -t -f -q 2>"${FILEPREFIX}/time.txt" "${FILEPREFIX}/cmds"
   $COMPRESSBIN "${FILEPREFIX}/time.txt"
   $COMPRESSBIN "${FILEPREFIX}/cmds"
+  echo
+  echo "files saved:"
   echo -e "${FILEPREFIX}/cmds.gz\n${FILEPREFIX}/time.txt.gz\n"
+  echo "to replay 1x speed:"
+  echo "$0 play ${FILEPREFIX}/cmds.gz ${FILEPREFIX}/time.txt.gz"
+  echo
+  echo "to replay 2x speed:"
+  echo "$0 play ${FILEPREFIX}/cmds.gz ${FILEPREFIX}/time.txt.gz 2"
 }
 
 replay() {

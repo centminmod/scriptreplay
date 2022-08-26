@@ -100,8 +100,16 @@ To exit and save the recorded session, type `exit` command which will output the
 
 ```
 exit
+
+files saved:
 /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/cmds.gz
 /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/time.txt.gz
+
+to replay 1x speed:
+./script-record play /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/time.txt.gz
+
+to replay 2x speed:
+./script-record play /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/cmds.gz /root/.script/2022-08-25/2022-08-25_23-01-40-cmds1/time.txt.gz 2
 ```
 
 # scriptreplay replay SSH commands
