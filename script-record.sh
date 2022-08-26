@@ -4,6 +4,7 @@
 # written by George Liu <https://centminmod.com>
 ###############################################################################
 VER=0.1
+DEBUG='n'
 CPUS=$(nproc)
 
 if [ -f /usr/bin/yum ] && [[ ! -f /usr/bin/scriptreplay || ! -f /usr/bin/script ]]; then
@@ -12,9 +13,9 @@ elif [ -f /usr/bin/apt ] && [[ ! -f /usr/bin/scriptreplay || ! -f /usr/bin/scrip
   sudo apt install util-linux
 fi
 
-if [ -f /usr/bin/yum && ! -f /usr/bin/tree ]; then
+if [[ -f /usr/bin/yum && ! -f /usr/bin/tree ]]; then
   sudo yum -q -y install tree
-elif [ -f /usr/bin/apt && ! -f /usr/bin/tree ]; then
+elif [[ -f /usr/bin/apt && ! -f /usr/bin/tree ]]; then
   sudo apt install tree
 fi
 
@@ -32,10 +33,31 @@ elif [ -f /usr/bin/zcat ]; then
   ZCATBIN='/usr/bin/zcat'
 fi
 
+disable_motd() {
+  if [ -f /etc/profile.d/dmotd.sh ]; then
+    # temp disable Centmin Mod dmotd.sh
+    mv /etc/profile.d/dmotd.sh /etc/profile.d/dmotd.sh-disabled
+    if [[ "$DEBUG" = [yY] ]]; then
+      ls -lAh /etc/profile.d/dmotd.sh*
+    fi
+  fi
+}
+
+reenable_motd() {
+  if [ -f /etc/profile.d/dmotd.sh-disabled ]; then
+    # temp disable Centmin Mod dmotd.sh
+    mv /etc/profile.d/dmotd.sh-disabled /etc/profile.d/dmotd.sh
+    if [[ "$DEBUG" = [yY] ]]; then
+      ls -lAh /etc/profile.d/dmotd.sh*
+    fi
+  fi
+}
+
 record() {
   SESSION_NAME="$1"
   FILEPREFIX="$HOME/.script/$(date '+%Y-%m-%d')/$(date '+%Y-%m-%d_%H-%M-%S')-${SESSION_NAME:-session}"
   mkdir -p $FILEPREFIX
+  disable_motd
   /usr/bin/script -t -f -q 2>"${FILEPREFIX}/time.txt" "${FILEPREFIX}/cmds"
   $COMPRESSBIN "${FILEPREFIX}/time.txt"
   $COMPRESSBIN "${FILEPREFIX}/cmds"
@@ -80,6 +102,8 @@ help() {
   echo "$0 list"
   echo
 }
+
+trap reenable_motd EXIT
 
 case "$1" in
   rec )
