@@ -2,9 +2,9 @@
 
 # Usage
 
-* rec - enter your SESSION_NAME
-* play - pass the full paths to where the `cmds.gz` and `time.txt.gz` files are saved
-* list - list all previously saved `cmds.gz` and `time.txt.gz` files
+* rec - enter your SESSION_NAME. If you do not pass a session name, the script will automatically name the session as `session`.
+* play - pass the full paths to where the `cmds.gz` and `time.txt.gz` files are saved. You can optionally pass a 3rd arugument for playback speed i.e. pass `2` for 2x playback speed.
+* list - list all previously saved `cmds.gz` and `time.txt.gz` files.
 
 ```
 ./script-record.sh
