@@ -3,7 +3,7 @@
 # linux script recording & replay wrapper
 # written by George Liu <https://centminmod.com>
 ###############################################################################
-VER=0.1
+VER=0.2
 DEBUG='n'
 CPUS=$(nproc)
 
@@ -17,6 +17,12 @@ if [[ -f /usr/bin/yum && ! -f /usr/bin/tree ]]; then
   sudo yum -q -y install tree
 elif [[ -f /usr/bin/apt && ! -f /usr/bin/tree ]]; then
   sudo apt install tree
+fi
+
+if [[ -f /usr/bin/yum && ! -f /usr/bin/pigz && ! -f /usr/local/bin/pigz ]]; then
+  sudo yum -q -y install pigz
+elif [[ -f /usr/bin/apt && ! -f /usr/bin/pigz && ! -f /usr/local/bin/pigz ]]; then
+  sudo apt install pigz
 fi
 
 if [[ -f /usr/local/bin/pigz && "$CPUS" -gt '1' ]]; then
