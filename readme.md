@@ -75,6 +75,7 @@ chmod +x /usr/local/bin/script-record
 
 * rec - enter your SESSION_NAME. If you do not pass a session name, the script will automatically name the session as `session`.
 * play - pass the full paths to where the `cmds.gz` and `time.txt.gz` files are saved. You can optionally pass a 3rd arugument for playback speed i.e. pass `2` for [2x playback speed](#replay-speed).
+* play-nogz - pass the full paths to where the uncompressed non-gzip `cmds` and `time.txt` files are saved. You can optionally pass a 3rd arugument for playback speed i.e. pass `2` for [2x playback speed](#replay-speed).
 * list - list all previously saved `cmds.gz` and `time.txt.gz` files.
 
 ```
@@ -85,6 +86,8 @@ Usage:
 ./script-record.sh rec SESSION_NAME
 ./script-record.sh play /path/to/cmds.gz /path/to/time.txt.gz
 ./script-record.sh play /path/to/cmds.gz /path/to/time.txt.gz 2
+./script-record.sh play-nogz /path/to/cmds /path/to/time.txt
+./script-record.sh play-nogz /path/to/cmds /path/to/time.txt 2
 ./script-record.sh list
 ```
 

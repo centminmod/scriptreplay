@@ -98,6 +98,27 @@ replay() {
   fi
 }
 
+replay_nogz() {
+  CMD_FILE="$1"
+  TIME_FILE="$2"
+  SPEED="$3"
+  if [[ -f "$CMD_FILE" && -f "$TIME_FILE" ]]; then
+    if [ "$3" ]; then
+      scriptreplay -t "$TIME_FILE" "$CMD_FILE" "$SPEED"
+    else
+      scriptreplay -t "$TIME_FILE" "$CMD_FILE"
+    fi
+  else
+    echo
+    echo "error: required file path(s) to cmds.gz or time.txt.gz do not exist"
+    echo
+    echo "existing files detected:"
+    /usr/bin/tree --charset utf8 --sort=ctime -n -f "$HOME/.script/"
+    echo
+    help
+  fi
+}
+
 list_files() {
   echo "saved files listing:"
   echo
@@ -112,6 +133,8 @@ help() {
   echo "$0 rec SESSION_NAME"
   echo "$0 play /path/to/cmds.gz /path/to/time.txt.gz"
   echo "$0 play /path/to/cmds.gz /path/to/time.txt.gz 2"
+  echo "$0 play-nogz /path/to/cmds /path/to/time.txt"
+  echo "$0 play-nogz /path/to/cmds /path/to/time.txt 2"
   echo "$0 list"
   echo
 }
@@ -124,6 +147,9 @@ case "$1" in
     ;;
   play )
     replay "$2" "$3" "$4"
+    ;;
+  play-nogz )
+    replay_nogz "$2" "$3" "$4"
     ;;
   list )
     list_files
