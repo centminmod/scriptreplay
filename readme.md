@@ -59,6 +59,8 @@ Usage:
 /usr/local/bin/script-record rec SESSION_NAME
 /usr/local/bin/script-record play /path/to/cmds.gz /path/to/time.txt.gz
 /usr/local/bin/script-record play /path/to/cmds.gz /path/to/time.txt.gz 2
+/usr/local/bin/script-record play-nogz /path/to/cmds /path/to/time.txt
+/usr/local/bin/script-record play-nogz /path/to/cmds /path/to/time.txt 2
 /usr/local/bin/script-record list
 ```
 
